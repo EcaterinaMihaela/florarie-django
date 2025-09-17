@@ -6,7 +6,8 @@ SECRET_KEY = 'secret-key-de-test'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ecaterina.pythonanywhere.com']
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',

@@ -1,13 +1,19 @@
+import os
 from pathlib import Path
 
+# BASE_DIR
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Secret key
 SECRET_KEY = 'secret-key-de-test'
 
+# Debug
 DEBUG = True
 
+# Hosts permise
 ALLOWED_HOSTS = ['ecaterina.pythonanywhere.com', 'localhost', '127.0.0.1']
 
+# Aplicații instalate
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -18,6 +24,7 @@ INSTALLED_APPS = [
     'main',  # aplicația ta
 ]
 
+# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -28,13 +35,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# URL Configuration
 ROOT_URLCONF = 'mysite.urls'
 
+# Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],  # lăsat gol pentru template-uri în aplicații
-        'APP_DIRS': True,  # foarte important să fie True!
+        'DIRS': [],  # template-uri în aplicații
+        'APP_DIRS': True,  # important să fie True
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
@@ -45,8 +54,10 @@ TEMPLATES = [
     },
 ]
 
+# WSGI
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
+# Baza de date
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -54,23 +65,24 @@ DATABASES = {
     }
 }
 
+# Limbă și fus orar
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
+# Static files
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # pentru colectarea fișierelor statice
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # folderul tău cu CSS, JS etc.
+STATIC_ROOT = BASE_DIR / 'staticfiles'    # pentru collectstatic
+STATICFILES_DIRS = [BASE_DIR / 'static']  # folderul cu CSS, JS
 
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-import os
+# Media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'
 
-# Redirect după login
-LOGIN_REDIRECT_URL = 'home'   # După login, te duce pe pagina principală
-LOGOUT_REDIRECT_URL = 'home'  # După logout, te duce pe pagina principală
+# Redirect după login/logout
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
+# Default primary key field
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

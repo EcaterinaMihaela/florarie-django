@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <title>Autentificare</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom right, #f8bbd0, #6a1b9a);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      form {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        width: 320px;
+        text-align: center;
+      }
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        margin: 12px 0;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+      button {
+        background-color: #7b1fa2;
+        border: none;
+        padding: 12px 20px;
+        color: white;
+        font-size: 16px;
+        border-radius: 25px;
+        cursor: pointer;
+        width: 100%;
+      }
+      button:hover {
+        background-color: #4a148c;
+      }
+      .error {
+        color: red;
+        margin-top: 10px;
+      }
+    </style>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <h2>Autentificare</h2>
+        <p>Nu ai cont? <a href="{% url 'register' %}">Înregistrează-te aici</a></p>
+
+        <input type="text" name="username" placeholder="Nume utilizator" required autofocus />
+        <input type="password" name="password" placeholder="Parolă" required />
+        <button type="submit">Conectează-te</button>
+
+        {% if form.errors %}
+        <div class="error">Datele sunt incorecte, încearcă din nou.</div>
+        {% endif %}
+    </form>
+</body>
+</html>

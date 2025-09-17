@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+  <div class="favorites-background">
+    <div class="favorites-wrapper">
+      <div class="favorites-title">
+    <h1>
+      <span class="floare-icon" aria-hidden="true">🌸</span>
+      Florile mele favorite:🌸
+    </h1>
+    <div class="linie-subliniere"></div>
+  </div>
+
+      {% if favorite_flori %}
+        <div class="favorites-container">
+          {% for floare in favorite_flori %}
+            <div class="floare-card">
+              <h3>{{ floare.nume }}</h3>
+
+              {% if floare.imagine %}
+                <a href="{% url 'detalii_floare' floare.id %}">
+                  <img src="{{ floare.imagine.url }}" alt="{{ floare.nume }}">
+                </a>
+              {% endif %}
+
+              <a href="{% url 'detalii_floare' floare.id %}" class="btn">Vezi detalii</a>
+
+              <form action="{% url 'remove_favorite' floare.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="remove-btn">Șterge din favorite</button>
+              </form>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="no-favorites-message">Nu ai flori în favorite.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

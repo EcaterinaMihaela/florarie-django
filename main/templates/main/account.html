@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+  <div class="account-background">
+    <div class="accountCard">
+      <h1>Contul meu</h1>
+      <p>Bun venit, {{ user.username }}!</p>
+      <p>Email: {{ user.email }}</p>
+      <a href="{% url 'logout' %}" class="logout-btn">Deconectare</a>
+    </div>
+  </div>
+{% endblock %}

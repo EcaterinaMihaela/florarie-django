@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+{% block content %}
+  <h2>Confirmare comandă</h2>
+
+  {% if cart_items %}
+    <ul>
+      {% for item in cart_items %}
+        <li>{{ item.flower.nume }} - Cantitate: {{ item.quantity }} - Subtotal: {{ item.subtotal }} lei</li>
+      {% endfor %}
+    </ul>
+    <p><strong>Total: {{ total }} lei</strong></p>
+
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit">Confirmă comanda</button>
+    </form>
+  {% else %}
+    <p>Coșul este gol.</p>
+  {% endif %}
+{% endblock %}

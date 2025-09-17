@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ floare.nume }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/styleDetails.css' %}">
+    <link rel="stylesheet" href="{% static 'main/favouriteBtn.css' %}">
+    <link rel="stylesheet" href="{% static 'main/sidebar.css' %}">
+</head>
+<body>
+    {% include 'main/base.html' %}
+    <div class="container">
+        <div class="floare-info">
+            <h1 class="titlu">{{ floare.nume }}</h1>
+            <p>{{ floare.descriere }}</p>
+            <p><strong>Preț:</strong> {{ floare.pret }} lei</p>
+            <p><strong>Stoc:</strong> {{ floare.stoc }}</p>
+            <a href="{% url 'home' %}" class="backButton">Înapoi la listă</a>
+        </div>
+        {% if floare.imagine %}
+        <div class="floare-imagine">
+            <img src="{{ floare.imagine.url }}" alt="{{ floare.nume }}">
+        </div>
+        {% endif %}
+
+        <!-- Butonul inimă -->
+              <form method="post" action="{% url 'toggle_favorite' floare.id %}">
+                {% csrf_token %}
+                <button type="submit" class="favorite-btn {% if floare.id in favorite_ids %}active{% endif %}">
+                   <span class="heart"></span>
+                </button>
+              </form>
+
+        
+        <script>
+            const favBtn = document.querySelector('.favorite-btn');
+            favBtn.addEventListener('click', () => {
+            favBtn.classList.toggle('active');
+            });
+        </script>
+        <script src="{% static 'js/favorites.js' %}"></script>
+
+
+    </div>
+
+
+</body>
+</html>

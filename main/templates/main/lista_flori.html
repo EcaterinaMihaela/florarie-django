@@ -1,0 +1,67 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <div class="titlu-animat">
+    <h1>
+      <span class="floare-icon" aria-hidden="true">🌸</span>
+      Toate florile🌸
+    </h1>
+    <div class="linie-subliniere"></div>
+  </div>
+
+  {% if not user.is_authenticated %}
+    <div class="auth-buttons" style="margin-bottom: 20px; text-align: center;">
+      <a href="{% url 'login' %}" class="btn auth-btn">Autentificare</a>
+      <a href="{% url 'register' %}" class="btn auth-btn">Înregistrare</a>
+    </div>
+  {% endif %}
+
+  <form method="get" action="{% url 'home' %}">
+    <div class="baraCauta">
+      <input type="text" name="q" placeholder="Caută floare..." value="{{ query|default:'' }}">
+      <button type="submit" class="butonCauta">Caută</button>
+    </div>
+  </form>
+
+  <br>
+
+  {% if flori %}
+    <div class="flori-grid">
+      {% for floare in flori %}
+        <div class="floare-card">
+          <h3>{{ floare.nume }} - {{ floare.pret }} lei</h3>
+
+          {% if floare.imagine %}
+            <img src="{{ floare.imagine.url }}" alt="{{ floare.nume }}">
+          {% endif %}
+
+          <form method="post" action="{% url 'toggle_favorite' floare.id %}">
+            {% csrf_token %}
+            <button type="submit" class="favorite-btn {% if floare.id in favorite_ids %}active{% endif %}">
+              <span class="heart"></span>
+            </button>
+          </form>
+
+          <a href="{% url 'detalii_floare' floare.id %}" class="detalii-btn">Vezi detalii</a>
+          <a href="{% url 'add_to_cart' floare.id %}">🛒 Adaugă în coș</a>
+
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>Nu s-a găsit nicio floare cu acel nume.</p>
+  {% endif %}
+
+  <script>
+    document.querySelectorAll('.favorite-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+      });
+    });
+  </script>
+
+  <script src="{% static 'js/favorites.js' %}"></script>
+
+{% endblock %}

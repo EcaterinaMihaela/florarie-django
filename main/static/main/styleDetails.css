@@ -1,0 +1,72 @@
+body {
+    background: linear-gradient(to right, #f8e1ff, #e4a1f2);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 40px;
+    color: #2b004b;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 900px;
+    margin: auto;
+    gap: 40px;
+}
+
+.floare-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.floare-imagine img {
+    width: 300px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.backButton {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #7b1fa2, #9c27b0);
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(123, 31, 162, 0.4);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.backButton:hover {
+    background: linear-gradient(135deg, #4a148c, #7b1fa2);
+    transform: scale(1.05);
+}
+
+.titlu {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #2b004b;
+}
+
+.titlu::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: #2b004b;
+    border-radius: 5px;
+}

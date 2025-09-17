@@ -1,0 +1,72 @@
+/* Bara laterală inițială */
+.sidebar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background-color: white;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+/* Bara când e activă */
+.sidebar.active {
+    left: 0;
+}
+
+/* Butonul de toggle */
+.toggle-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1100;
+    font-size: 24px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Conținutul principal */
+.main-content {
+    margin-left: 0;
+    transition: margin-left 0.3s ease;
+}
+
+/* Dacă vrei ca tot conținutul să se deplaseze când bara e activă */
+.sidebar.active ~ .main-content {
+    margin-left: 250px;
+}
+
+
+.sidebar h2 {
+    margin-bottom: 30px;
+    color: #4CAF50;
+    font-size: 24px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.sidebar ul li a:hover {
+    color: #4CAF50;
+}
+
+.content {
+    margin-left: 240px;
+    padding: 20px;
+}

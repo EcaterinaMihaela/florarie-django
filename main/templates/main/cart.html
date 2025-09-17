@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/cart.css' %}">
+
+<div class="cart-container">
+  <h2>Coșul tău de cumpărături 🛒</h2>
+
+  {% if cart_items %}
+    {% for item in cart_items %}
+      <div class="cart-item">
+        <div class="cart-details">
+          <p class="product-name">{{ item.flower.nume }}</p>
+          <p>Cantitate: {{ item.quantity }}</p>
+          <p>Subtotal: {{ item.subtotal }} lei</p>
+
+          <form method="POST" action="{% url 'remove_from_cart' item.flower.id %}">
+            {% csrf_token %}
+            <button type="submit">❌ Șterge</button>
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+
+    <hr>
+    <p class="total-price"><strong>Total: {{ total }} lei</strong></p>
+    <a href="{% url 'checkout' %}" class="checkout-button">Trimite comanda</a>
+  {% else %}
+    <p>Coșul tău este gol.</p>
+  {% endif %}
+</div>
+{% endblock %}

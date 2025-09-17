@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Florărie Online</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'main/favorites.css' %}">
+    <link rel="stylesheet" href="{% static 'main/account.css' %}">
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+    <link rel="stylesheet" href="{% static 'main/favouriteBtn.css' %}">           
+
+</head>
+<body>
+
+    <!-- Bara laterală -->
+    <div id="sidebar" class="sidebar">
+        <h2>Florărie</h2>
+        <ul>         
+            <li><a href="{% url 'home' %}">🌸 Toate florile</a></li>
+            <li><a href="{% url 'favorites' %}">❤️ Favorite</a></li>
+            <li><a href="{% url 'account' %}">👤 Contul meu</a></li>
+            <li><a href="{% url 'view_cart' %}">🛒 Coșul meu</a></li>  
+            <li><a href="{% url 'logout' %}">🔓 Deconectare</a></li>
+        </ul>
+    </div>
+
+    <!-- Buton de meniu -->
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
+    <!-- Conținutul principal -->
+    <div class="main-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Script pentru deschiderea/retragerea barei -->
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

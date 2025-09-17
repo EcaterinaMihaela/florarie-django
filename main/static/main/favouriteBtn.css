@@ -1,0 +1,57 @@
+
+.favorite-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  margin-right: 30px; /* sau cât spațiu vrei */
+  vertical-align: middle; /* să stea aliniat cu textul */
+}
+
+.heart {
+  display: inline-block;
+  width: 20px;
+  height: 18px;
+  background: transparent;
+  position: relative;
+  transform: rotate(-45deg);
+  transition: background-color 0.3s ease;
+  border-radius: 15px 15px 0 0;
+  border: 2px solid #7b1fa2;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 18px;
+  background: transparent;
+  border: 2px solid #7b1fa2;
+  border-radius: 15px 15px 0 0;
+  transition: background-color 0.3s ease;
+  top: -10px;
+  left: 0;
+}
+
+.heart::before {
+  top: -15px;
+  left: 0;
+}
+
+.heart::after {
+  top: 0;
+  left: 10px;
+}
+
+.favorite-btn.active .heart,
+.favorite-btn.active .heart::before,
+.favorite-btn.active .heart::after {
+  background: #e91e63;  /* culoare inimă activă */
+  border-color: #e91e63;
+}
+

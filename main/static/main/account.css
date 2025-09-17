@@ -1,0 +1,33 @@
+.account-background {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8bbd0, #6a1b9a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.accountCard {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.logout-btn {
+    margin-top: 20px;
+    background-color: #8bc34a;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #689f38;
+}
